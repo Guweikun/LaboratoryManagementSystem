@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    namespace:名称空间
+-->
+
+<mapper namespace="com.gwk.mapper.CourseMapper">
+
+    <resultMap id="courseResultMap" type="course">
+        <result column="class" property="classroom"></result>
+
+    </resultMap>
+
+    <insert id="insertCourse">
+        insert into course (course_name,college_num,college,teacher,hours,people_num,class)
+        values (#{course_name},1, #{college}, #{teacher}, #{hours}, #{people_num}, #{classroom})
+    </insert>
+
+    <update id="updateCourse">
+        update course set college = #{college}, teacher = #{teacher},hours = #{hours},people_num = #{people_num}, class = #{classroom}
+        where course_name = #{course_name}
+    </update>
+
+    <delete id="deleteCourse">
+        delete from course where course_name = #{course_name}
+    </delete>
+
+    <select id="selectAllCourse" resultType="com.gwk.pojo.Course" resultMap="courseResultMap">
+        select * from course
+    </select>
+</mapper>

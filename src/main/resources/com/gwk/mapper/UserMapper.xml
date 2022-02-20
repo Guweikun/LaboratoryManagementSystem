@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    namespace:名称空间
+-->
+
+<mapper namespace="com.gwk.mapper.UserMapper">
+    <insert id="insertUser" parameterType="com.gwk.pojo.User">
+        insert into user (permission,account,name,password)
+        values (#{permission}, #{account}, #{name}, #{password})
+    </insert>
+
+    <update id="updateUser">
+        update user set permission = #{permission}, name = #{name}
+        where account = #{account}
+    </update>
+
+    <delete id="deleteUser">
+        delete from user where account = #{account}
+    </delete>
+
+    <select id="selectAllUser" resultType="com.gwk.pojo.User">
+        select * from user
+    </select>
+
+    <select id="selectUser" resultType="com.gwk.pojo.User">
+        select * from user where account = #{account}
+    </select>
+</mapper>

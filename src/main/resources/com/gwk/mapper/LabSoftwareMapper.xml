@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    namespace:名称空间
+-->
+
+<mapper namespace="com.gwk.mapper.LabSoftwareMapper">
+    <insert id="insertLabSoftware" parameterType="com.gwk.pojo.LabSoftware">
+        insert into software_lab (address,software_name,category,edition,space)
+        values (#{address}, #{software_name}, #{category}, #{edition}, #{space})
+    </insert>
+
+    <update id="updateLabSoftware">
+        update software_lab set software_name = #{software_name},category = #{category},edition = #{edition},space = #{space}
+        where address = #{address}
+    </update>
+
+    <delete id="deleteLabSoftware">
+        delete from software_lab where address = #{address} and software_name = #{software_name} and category = #{category} and edition = #{edition} and space = #{space}
+    </delete>
+
+    <select id="selectAllLabSoftware" parameterType="java.lang.String" resultType="com.gwk.pojo.LabSoftware">
+        select * from software_lab where address = #{address}
+    </select>
+</mapper>
